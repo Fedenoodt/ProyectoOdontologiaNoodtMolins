@@ -9,4 +9,4 @@ recibe su turno, e información, y se dirije a sala de espera.
 ¡Espero les guste!
 
 Link para ejecutar en línea:
-  <<  https://fedenoodt.github.io/Pagina_personal/PyC/CoderHouse/odontologiaNoodtMolins/miArchivo.html  >>
+  <<  https://fedenoodt.github.io/Pagina_personal/PyC/CoderHouse/odontologiaNoodtMolins/miarchivo.html  >>
