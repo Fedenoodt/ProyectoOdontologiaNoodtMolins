@@ -32,15 +32,24 @@ function relojDosDigitos (valor) {
     return termino
 }
 
+function crearNavegacion () {
+    let barra = document.createElement("NAV");
+    barra.innerHTML = `
+    <h1>Swiss Medical Caballito</h1><img id = "smg" src = "SMG.png">
+    `;    
+    document.body.appendChild(barra)
+}
+
 function main () {
 // "main" se encarga de construir la línea del programa.
-    document.write(`<center><h1>Swiss Medical Caballito</h1><br /></center>`);
     // Este es el primer segmento constructor del turno del usuario.
-    document.write(`<center><h2>Ticket del Centro Odontológico</h2><br /><h3>Ingrese los datos</h3></center>`);
+
+    crearNavegacion()
     // Se arma el interrogante sobre que tipo de consulta se trata.
     let turno = document.createElement("div");
     turno.innerHTML = `
     <div><center>
+    <br /><center><h2>Ticket del Centro Odontológico</h2><br /><h3>Ingrese los datos</h3></center>
     <form id="tipoPacientes">
         <label for="tur">Turno</label><br />
         <select name = "turno" id = "tur" multiple>
@@ -48,13 +57,14 @@ function main () {
             <option value = "ondodoncia">Ondodoncia</option>
             <option value = "ortodoncia">Ortodoncia</option>
             <option value = "radiografias">Radiografías</option>
-        </select>
+        </select><br /><br />
         <input type = "submit" value = "Submit" />
     </form>
     </center></div>`;
 
     document.body.appendChild(turno);
     // Y se registra lo que haya devuelto.
+    let tipo = '';
     let tomaTurno = document.getElementById("tipoPacientes");
     tomaTurno.addEventListener("submit", registrar);
 
@@ -102,8 +112,15 @@ function main () {
 
     let dia = `${dias} de ${mes} de ${dt.year}`;
     let hora = `${horas}:${minutos}hs.`;
-    let imagen = `<br /><br /><h1>Su turno es ${retorno}.</h1><br /><h1>Será llamado por apellido, por el profesional ${personal} de ${objetivo}.</h1><br /><h3>Y recuerde lavarse los dientes :)</h3><br /><br /><h4>El turno fue solicitado a las ${hora}, el ${dia}.</h4>`;
-    document.write(imagen);
+    let imagen = `<br /><br /><h1>Su turno es ${retorno}.</h1><br /><h1>Será llamado por apellido, por el profesional ${personal} de ${objetivo}.</h1><br /><h3>Y recuerde lavarse los dientes ☻</h3><br /><br /><h4>El turno fue solicitado a las ${hora}, el ${dia}.</h4>`;
+    let imagenBIS = `Su turno es ${retorno}.
+    Será llamado por apellido, por el profesional ${personal} de ${objetivo}.
+    El turno fue solicitado a las ${hora}, el ${dia}.
+    
+    Y recuerde lavarse los dientes ☻`;
+    alert(imagenBIS);
+    document.body.removeChild(turno)
+    tipo != '' ? success() : fail()
     datos = { 'credencial': credencial, 'dia': dia, 'hora': hora, 'profesion': objetivo, 'profesional': personal };
     const enJSON = JSON.stringify(datos);
     localStorage.setItem('Cliente', enJSON)
@@ -125,12 +142,22 @@ function main () {
 
 fetch('registros.json')
 .then((response) => response.json())
-.then((data) => console.log(data));
+.then((data) => console.log(data));         
 
 console.log(fetch('registros.json'));
 
 function fail () {
-    document.write(`<center><h1>Swiss Medical Caballito</h1><br /></center>`);
-    document.write(`<center><h2>Ticket del Centro Odontológico</h2><br /><h3>Por favor. Le solicitamos que recarge la página para tramitar su turno. Muchas gracias.</h3></center>`);
+    crearNavegacion()
+    let web = document.createElement("div");
+    web.innerHTML = `
+    <div><center>
+    <br /><center><h2>Ticket del Centro Odontol&oacute;gico</h2><br /><h3>Por favor. Le solicitamos que recarge la p&aacute;gina para tramitar su turno. Muchas gracias.</h3></center></div>`;
+    document.body.appendChild(web)
 }
 
+function success () {
+    crearNavegacion()
+    let web = document.createElement("div");
+    web.innerHTML = `<div><center><h3> Espero que tenga un buen d&iacute;a.</h3></center></div>`
+    document.body.appendChild(web)
+}
