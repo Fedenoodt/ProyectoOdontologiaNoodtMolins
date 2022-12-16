@@ -1,0 +1,32 @@
+nav {
+    position: absolute;
+    background-color: rgb(185, 185, 185);
+    font-family: sans-serif;
+    color: rgb(95, 95, 95);
+    top: 0%;
+    left: 0%;
+    width: 100%;
+}
+
+#smg {
+    position: absolute;
+    width: 250px;
+    top: 10px;
+    left: 85%;
+}
+
+h1 {
+    margin-left:15%;
+}
+
+div {
+    position: absolute;
+    top: 38%;
+    width: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    color: rgba(210, 210, 210, 1);
+    background-color: rgba(70, 70, 70, 1);
+}
