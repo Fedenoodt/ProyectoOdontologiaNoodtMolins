@@ -34,18 +34,40 @@ function listaObjetos () {
     return constructor
 }
 
+// desComillar hace limpieza de todos los caracteres a la perfección. NO TOCAR.
+
+// function desComillar () {
+//     const conversor = listaObjetos();
+//     // console.log(conversor)
+
+//     let reescritura = '';
+//     for (let i = 0; i < conversor.length; i++) {
+//         if (conversor[i] == '"' | conversor[i] == '{' | conversor[i] == '}' | conversor[i] == '[' | conversor[i] == ']') 
+//         {reescritura += ''}
+//         else {reescritura+= conversor[i]}
+//         // console.log(reescritura[i])
+//     }
+//     // conversor.replace(':', '')
+//     return reescritura
+// }
+
 function desComillar () {
     const conversor = listaObjetos();
     // console.log(conversor)
 
+    let reescritura = '';
     for (let i = 0; i < conversor.length; i++) {
-        if (conversor[i] == '"' | conversor[i] == '{' | conversor[i] == '}' | conversor[i] == '[' | conversor[i] == ']') 
-        // {document.write('ALTERCADOOO')
-        conversor.replace(`${conversor[i]}`, ``)
-        document.write(conversor[i])
+        if (conversor[i] == '"' | conversor[i] == '{' | conversor[i] == '}' | conversor[i] == '[' | conversor[i] == ']' | conversor[i] == '.') 
+        {reescritura += ''}
+        else if (conversor[i] == ':' | conversor[i] == ','){
+            reescritura += `${conversor[i]} `
+        }
+        else {reescritura+= conversor[i]}
+        // console.log(reescritura[i])
     }
     // conversor.replace(':', '')
-    return conversor
+    return reescritura
 }
 
-desComillar()
+let limpio = desComillar()
+console.log(limpio)
